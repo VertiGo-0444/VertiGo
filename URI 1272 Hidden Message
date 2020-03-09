@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int testcase = sc.nextInt();
+		sc.nextLine();
+		for (int i = 0; i < testcase; i++) {
+			String text = sc.nextLine().trim();
+			char[] aText = text.toCharArray(); // convert to char
+			ArrayList<Character> a = new ArrayList<Character>(); // create ArrayList
+			
+			if (aText.length != 0) {
+				a.add(aText[0]); // adding 1st index to 'a' arraylist(1st index cannot be space because "trim"
+				for(int j = 1; j < aText.length; j++){
+					if (aText[j] == ' ' && aText[j + 1] != ' ')// check if 2nd index is space
+						a.add(aText[j+1]);
+				}
+			String result = String.valueOf(a);
+			result = result.replaceAll(" ", "");// removing spaces
+			result = result.replaceAll("[\\[\\]]", "");//removing []s
+			result = result.replaceAll(",", "");// removing ,s
+			System.out.println(result);
+			}
+			else // if no letters or just spaces print ""
+			System.out.println();
+		}
+			
+		}
+
+	}
+
+
+
