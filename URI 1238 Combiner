@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+
+		for (int i = 0; i < n; i++) {
+			String s1 = sc.next(); 
+			String s2 = sc.next();
+			String news = "";
+			
+			int a = Math.min(s1.length(), s2.length());
+			for(int j = 0; j < a; j++) {
+				char string1 = s1.charAt(j);
+				char string2 = s2.charAt(j);
+				news += (Character.toString(string1) + Character.toString(string2));
+				
+			}
+			
+			if(s2.length() > s1.length()) {
+				news += (s2.substring(s1.length()));
+			}else {
+				news += (s1.substring(s2.length()));
+				
+			}
+			
+			System.out.println(news);
+
+		}
+
+	}
+
+}
