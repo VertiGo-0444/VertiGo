@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int testCase = sc.nextInt();
+		sc.nextLine();
+		for (int i = 0; i < testCase; i++) {
+			
+			String line = sc.nextLine();
+			char[] lineArray = line.toCharArray();
+
+			for (int j = 0; j < lineArray.length; j++) {
+				if (Character.isAlphabetic(lineArray[j])) {
+					lineArray[j] = (char) (lineArray[j] + 3);
+
+				}
+			}
+			
+			
+			for (int j = 0; j < lineArray.length / 2; j++) {
+				int number = lineArray[j];
+				lineArray[j] = lineArray[lineArray.length - 1 - j];
+				lineArray[lineArray.length - 1 - j] = (char) number;
+			}
+			
+			
+			for(int j = lineArray.length / 2; j < lineArray.length; j++) {
+				lineArray[j] = (char)(lineArray[j] - 1);
+			}
+			
+			System.out.println(lineArray);
+			
+		}
+
+	}
+}
