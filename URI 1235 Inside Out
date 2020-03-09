@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		int testcase = sc.nextInt();
+		sc.nextLine();
+		for (int i = 0; i < testcase; i++) {
+			String text = sc.nextLine();
+			System.out.println(rightLine(text));
+		}
+
+	}
+
+	private static String rightLine(String text) {
+		char[] aText = text.toCharArray();
+		
+		int mid = aText.length / 2;
+		
+		if (aText.length % 2 != 0)
+			mid++;
+
+		StringBuilder reverse = new StringBuilder(text);
+		reverse = reverse.reverse();
+
+		String result = reverse.substring(mid) + reverse.substring(0, mid);
+
+		return result;
+	} 
+
+}
