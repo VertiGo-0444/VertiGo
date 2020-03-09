@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int testcase = sc.nextInt();
+		
+		for (int i = 0; i < testcase; ++i) {
+			sc.nextLine();
+			String text1 = sc.next();
+			String text2 = sc.next();
+		System.out.println(tester(text1, text2));
+		}
+ 
+		
+	}
+
+	public static String tester(String text1, String text2) {
+		
+		int smallest = text1.length() - text2.length();
+		if (smallest >= 0)
+			if (text2.equals(text1.substring(smallest))){
+				return "encaixa";
+	    }
+		return "nao encaixa";
+	
+	}
+}
