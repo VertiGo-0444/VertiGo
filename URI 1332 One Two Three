@@ -1,0 +1,28 @@
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        int N = scanner.nextInt();
+        for (int i = 0; i < N; i++) {
+            String numWord = scanner.next();
+
+            if (numWord.length() == 5) {
+                System.out.println("3");
+            } else {
+                String one = "one";
+                int mistakes = 0;
+                for (int j = 0; j < one.length(); j++) {
+                    char ch = numWord.charAt(j);
+                    if (ch != (one.charAt(j))) {
+                        mistakes++;
+                    }
+                }
+                if (mistakes > 1){
+                    System.out.println("2");
+                }else if (mistakes <= 1){
+                    System.out.println("1");
+                }
+            }
+        }
+    }
+}
