@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+
+		int n = Integer.parseInt(br.readLine());
+
+		for (int y = 0; y < n; ++y) {
+			String diet = (br.readLine()); 
+			String breakf = br.readLine();
+			String lun = br.readLine();
+			StringBuilder res = new StringBuilder(diet); // converting string diet to stringbuilder res
+
+			boolean check = true;
+			
+			for (int i = 0; i < breakf.length(); ++i) {
+
+				int pos = res.indexOf(Character.toString(breakf.charAt(i))); // 1) getting char in breakf String with index of i 
+																			//	2) converting char in breakf String with index of i to String
+																			// 3) finding index of this char in format of String in res
+				if (pos == -1) {						// returning -1 if not found				
+					res.delete(0, res.length());	// опустошаем StringBuilder res
+					check = false;
+
+				} else {
+					res.deleteCharAt(pos); // if found delete that found char
+				}
+			}
+
+			for (int i = 0; i < lun.length(); ++i) {	// то же самое с завтраком breakf
+
+				int pos = res.indexOf(Character.toString(lun.charAt(i)));
+
+				if (pos == -1) {
+					res.replace(0, res.length(), "");
+
+					check = false;
+
+				} else {
+					res.deleteCharAt(pos);
+				}
+			}
+			if (check == false) {
+				System.out.println("CHEATER");
+			} else {
+				// we should print dinner in alphabetical order
+				diet = res.toString();// StringBuilder res convert to String diet
+				char[] aDiet = diet.toCharArray();// converting String diet to char array aDiet
+				
+				boolean[] array = new boolean[26];//creating array for 26 letters(alphabet) 
+				for (int i = 0; i < aDiet.length; ++i) {
+					int valueOfChar = (int)aDiet[i]; // converting char to integer
+					array[valueOfChar-65]=true; // converting from asciiNum to alphabetNum (A from 65 to 0,..) and ""true""
+					
+				}
+				for (int i = 0; i < array.length; ++i) {
+					if (array[i]==true) {
+						System.out.print((char)(i+65)); // converting char to asciiNum and printing 'samo' letter
+					}
+				}
+				System.out.println();
+
+			}
+
+		}
+
+	}
+}
