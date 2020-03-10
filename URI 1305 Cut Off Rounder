@@ -1,0 +1,57 @@
+import java.io.IOException;
+ 
+import java.util.*;
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		while (scan.hasNextLine()){
+			String n=scan.nextLine();
+			String c=scan.nextLine();
+			cutoff(n, c);
+		}
+
+	}
+
+	private static void cutoff(String n, String c) {
+		if(n.indexOf('.')>=0){
+			int dot=n.indexOf('.');
+			
+			String s=n.substring(dot, n.length());
+			
+			
+			if(s.equals(".")){
+				n=n.replace(".", "0");
+				System.out.println(Integer.parseInt(n)/10);
+				return;
+			}
+			
+			s=n.substring(0, dot);
+			int num1=0;
+			if (s.length()==0)
+				num1=0;
+			else
+				num1=Integer.parseInt(n.substring(0, dot));
+			double num=Double.parseDouble(n.substring(dot, n.length()));
+			
+			double cut=Double.parseDouble(c);
+			
+			if(num>cut){
+				System.out.println(num1+1);
+				return;
+			}
+			else{
+				System.out.println(num1);
+				return;
+			}
+				
+			
+		}
+		else 
+			System.out.println(Integer.parseInt(n));
+		
+		
+		
+	}
+
+}
