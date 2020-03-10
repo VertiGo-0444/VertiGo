@@ -1,0 +1,44 @@
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+       int N = scanner.nextInt();
+       scanner.nextLine();
+
+       for (int i = 0; i < N; i++){
+           String str1 = scanner.next();
+           String str2 = scanner.next();
+
+           Advancing advancing = new Advancing(str1,str2);
+
+           int result = advancing.getResult();
+
+           System.out.println(result);
+       }
+
+    }
+}
+
+class Advancing {
+    private String string1;
+    private String string2;
+
+    Advancing(String string1, String string2){
+        this.string1 = string1;
+        this.string2 = string2;
+    }
+
+    public int getResult(){
+        char[] a = string1.toCharArray();
+        char[] b = string2.toCharArray();
+        int result = 0;
+        for (int i = 0; i < a.length;i++){
+            if ((int)a[i] > (int)b[i]){
+                result += 26 - ((int)a[i] - (int)b[i]);
+            }else if ((int)a[i] < (int)b[i]){
+                result += ((int)b[i] - (int)a[i]);
+            }
+        }
+        return result;
+    }
+}
