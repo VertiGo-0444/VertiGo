@@ -1,0 +1,25 @@
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        while (scanner.hasNextLine()){
+            String string = scanner.nextLine();
+            Bloggo bloggo = new Bloggo(string);
+            System.out.println(bloggo.getString());
+        }
+
+    }
+}
+class Bloggo {
+    private String string;
+
+    Bloggo(String string){
+        this.string = string;
+    }
+
+    public String getString(){
+        while (string.contains("_") || string.contains("*"))
+            string = string.replaceFirst("_","<i>").replaceFirst("_","</i>").replaceFirst("\\*","<b>").replaceFirst("\\*","</b>");
+        return string;
+    }
+}
