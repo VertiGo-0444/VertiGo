@@ -1,0 +1,62 @@
+import java.util.*;
+
+public class Main {
+
+	// SHORT ATTENDANCE
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		int tests = Integer.parseInt(scan.nextLine());
+		for (int i = 0; i < tests; ++i) {
+
+			ArrayList<String> names = new ArrayList();
+
+			int numofstudents = scan.nextInt();
+			scan.nextLine();
+
+			String[] studentsname = new String[numofstudents];
+			String[] attendance = new String[numofstudents];
+
+			int attendanceperc = 0;
+
+			for (int j = 0; j < numofstudents; ++j) {
+				studentsname[j] = scan.next();// reads each name
+			}
+
+			for (int j = 0; j < numofstudents; ++j) {
+				int count = 0;
+				attendance[j] = scan.next();
+				char[] aAttendance = attendance[j].toCharArray();// convert
+																	// index at
+																	// j of
+																	// attendance
+																	// to char
+																	// aAttendeance
+
+				int total = attendance[j].length(); // assigns to total
+													// attendance record
+
+				for (int k = 0; k < aAttendance.length; ++k) {
+					if (aAttendance[k] == 'P') {
+						count++;
+					}
+					if (aAttendance[k] == 'M') {
+						total--;
+					}
+				}
+				attendanceperc = (count * 100) / total;
+				if (attendanceperc < 75) {
+					names.add(studentsname[j]);
+				}
+			}
+
+			String result = String.valueOf(names); // converting arrayList a to
+													// String
+			result = result.replaceAll("[\\[\\]]", "");// removing []s
+			result = result.replaceAll(",", "");// removing ,s
+			System.out.println(result);
+		}
+
+	}
+}
