@@ -1,0 +1,39 @@
+    import java.util.InputMismatchException;
+
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+
+        int N = scanner.nextInt();
+
+        while (N != 0) {
+            int s = 0;
+            int p = 0;
+            String addIdentifier = "";
+
+
+
+            for (int i = 0; i < N; i++) {
+
+                String identifier = scanner.next();
+                int time = scanner.nextInt();
+                String word = scanner.next();
+
+                if (word.equals("correct")) {
+                    s++;
+                    p += time + countIdentifier(addIdentifier, identifier) * 20;
+                }
+                addIdentifier += identifier;
+
+            }
+            System.out.println(s + " " + p);
+            N = scanner.nextInt();
+
+
+        }
+    }
+    public static int countIdentifier(String addIdentifier, String identifier){
+        return addIdentifier.length() - addIdentifier.replaceAll(identifier,"").length();
+    }
+}
