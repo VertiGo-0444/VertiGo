@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = Integer.parseInt(sc.nextLine());
+		while(n != 0) {
+			String[] word = new String[n];// create array of string 'word'
+			int longest = 0;
+			
+			for (int i = 0; i < n; i ++) {
+				word[i] = sc.nextLine();
+			                                       // identifying the longest word
+				if (word[i].length() > longest) {
+					
+					longest = word[i].length();
+			 		
+				}
+				
+			}
+			
+			for (int i = 0; i < n; i ++) {
+				
+				String output = "";
+				
+				if (word[i].length() < longest) {  // finding other words that are not longest
+					
+					for (int j = 0; j < longest - word[i].length(); j ++) { // difference of longest and other words
+						
+						output += " "; // adding spaces before not longest words
+						
+					}
+					
+				}
+				
+				output += word[i];  // adding "samo" word to the spaces
+				System.out.println(output);
+			
+			}
+			
+			n = Integer.parseInt(sc.nextLine());
+			if (n!=0)
+				System.out.println();
+		}
+		
+	}
+
+}
