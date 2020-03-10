@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int testcase = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < testcase; i++) {
+
+            String sentence = sc.nextLine();
+
+            Complete complete = new Complete(sentence);
+
+            sentence = complete.sentence();
+
+            System.out.println(sentence);
+        }
+    }
+
+}
+class Complete {
+    private String string;
+
+    Complete(String string){
+        this.string = string;
+    }
+
+    String sentence(){
+        int[] alphabetic = new int[26];
+        int count = 0;
+        for (int i = 0; i < string.length(); i++){
+            if (Character.isLowerCase(string.charAt(i)))
+                alphabetic[string.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < alphabetic.length;i++){
+            if (alphabetic[i] == 0)
+                count++;
+        }
+
+        if (count == 0){
+            return "frase completa";
+        }else if (count < 13){
+            return "frase quase completa";
+        }
+        else
+            return "frase mal elaborada";
+
+    }
+}
