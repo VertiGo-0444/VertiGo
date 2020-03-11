@@ -1,0 +1,74 @@
+public class Main {
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        System.out.println("Calculator of Rational Numbers");
+
+        do {
+            System.out.print("Enter the first rational (press Ctrl-Z to exit): ");
+            if (!scanner.hasNext()) break;
+            Rational a;
+            try {
+                a = Rational.parse(scanner.nextLine());
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+                continue;
+            }
+
+            System.out.print("Enter operator: ");
+            if (!scanner.hasNext()) break;
+            String operator = scanner.nextLine();
+
+            System.out.print("Enter the second rational (press Ctrl-Z to exit): ");
+            if (!scanner.hasNext()) break;
+            Rational b;
+            try {
+                b = Rational.parse(scanner.nextLine());
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+                continue;
+            }
+
+            String result = " ";
+            switch (operator) {
+                case "+":
+                    result = a.add(b).toString();
+                    break;
+                case "-":
+                    result = a.sub(b).toString();
+                    break;
+                case "*":
+                    result = a.mul(b).toString();
+                    break;
+                case "/":
+                    result = a.div(b).toString();
+                    break;
+                case "<":
+                    result = a.compareTo(b) < 0 ? "true" : "false";
+                    break;
+                case ">":
+                    result = a.compareTo(b) > 0 ? "true" : "false";
+                    break;
+                case "=":
+                    result = a.compareTo(b) == 0 ? "true" : "false";
+                    break;
+                case "!=":
+                    result = a.compareTo(b) != 0 ? "true" : "false";
+                    break;
+                case "<=":
+                    result = a.compareTo(b) <= 0 ? "true" : "false";
+                    break;
+                case ">=":
+                    result = a.compareTo(b) >= 0 ? "true" : "flase";
+                    break;
+                default:
+                    System.err.println("Incorrect operator: " + operator);
+                    continue;
+
+
+            }
+
+            System.out.printf("%s %s %s = %s%n", a, operator, b, result);
+        } while (true);
+    }
+}
